@@ -1,0 +1,45 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="/">Accueil</a></li>
+      <li>Programmation</li>
+    </ul>
+  </aside>
+  <h1>Programmation</h1>
+</header>
+
+<style>
+  #content dl.prog { }
+  #content dl.prog dd { margin: 0; padding: 0; }
+  #content dl.prog ul { margin: 0; padding: 0; }
+  #content dl.prog li { margin: 0; padding: 5px; list-style-type: none; list-style-image: none; }
+</style>
+
+<div>
+  <dl class="prog">
+    {% for day, datas in entities %}
+    <dt><h1>{{ day|date("l") }} - {{day}}</h1></dt>
+    <dd>
+      <ul>
+      {% for item in datas %}
+        <li>
+            <figure class="user">
+                <img src="{{ asset('img/artistes/' ~ item.artist.image) }}" alt="{{ item.artist.name }}">
+                <figcaption>
+                    <span class="name"><a href="{{ path('artist_show', {id: item.artist.id}) }}">{{ item.artist.name }}</a></span>
+                    <span class="info">{{ item.artist.gender }} - {{ item.artist.country }}</span>
+                </figcaption>
+            </figure>
+        </li>
+      {% endfor %}
+      </ul>
+    </dd>
+    {% endfor %}
+  </dl>
+</div>
+
+{% endblock %}

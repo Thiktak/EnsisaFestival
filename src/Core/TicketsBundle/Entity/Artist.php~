@@ -78,15 +78,10 @@ class Artist
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\Core\TicketsBundle\Entity\Programmation", inversedBy="artists")
+     * @ORM\ManyToMany(targetEntity="\Core\TicketsBundle\Entity\Artist", inversedBy="artists")
      * @ORM\JoinTable(name="artist_programmation")
      */
     protected $programmations;
-
-
-    public function __toString() {
-        return (string) $this->getName();
-    }
 
     /**
      * Get id

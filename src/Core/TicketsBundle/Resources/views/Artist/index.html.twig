@@ -1,0 +1,55 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="/">Accueil</a></li>
+      <li>Artistes</li>
+    </ul>
+  </aside>
+  <h1>Artistes</h1>
+</header>
+
+    <ul class="btn-group pull-right">
+        <li class="btn btn-mini">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Genre
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="?">Tous</a></li>
+                <li class="divider"></li>
+                {% for gender in genders %}
+                <li><a href="?filter-gender={{gender}}">{{ gender }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="btn btn-mini">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Pays
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="?">Tous</a></li>
+                <li class="divider"></li>
+                {% for country in countries %}
+                <li><a href="?filter-country={{country}}">{{ country }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+<br /><br />
+
+{% for entity in entities %}
+<figure class="user">
+    <img src="{{ asset('img/artistes/' ~ entity.image) }}" alt="{{ entity.name }}">
+    <figcaption>
+        <span class="name">{{ entity.name }}</span>
+        <span class="info">{{ entity.gender }} - {{ entity.country }}</span>
+    </figcaption>
+</figure>
+<br />
+{% endfor %}
+{% endblock %}

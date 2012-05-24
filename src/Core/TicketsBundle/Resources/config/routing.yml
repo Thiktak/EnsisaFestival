@@ -1,0 +1,8 @@
+CoreTicketsBundle_artist:
+    resource: "@CoreTicketsBundle/Resources/config/routing/artist.yml"
+    prefix:   /artiste
+
+CoreTicketsBundle_programmation:
+    resource: "@CoreTicketsBundle/Resources/config/routing/programmation.yml"
+    prefix:   /programmation
+

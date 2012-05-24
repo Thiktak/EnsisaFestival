@@ -1,0 +1,21 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<h1>ArtistProgrammation creation</h1>
+
+<form action="{{ path('artistprogrammation_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('artistprogrammation') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

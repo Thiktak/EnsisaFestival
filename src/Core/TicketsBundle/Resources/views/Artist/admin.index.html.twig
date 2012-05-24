@@ -1,0 +1,51 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+<h1>Artist list</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name (Gender - Country)</th>
+            <th>Descr</th>
+            <th>Www - Youtube</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                {{ entity.name }}
+                ({{ entity.gender }} - {{ entity.country }})
+            </td>
+            <td>{{ entity.descr }}</td>
+            <td>
+                {{ entity.www }}
+                {{ entity.youtube }}
+            </td>
+            <td>{{ entity.image }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('artist_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('artist_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('artist_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+{% endblock %}

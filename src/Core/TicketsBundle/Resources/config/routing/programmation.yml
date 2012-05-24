@@ -1,0 +1,30 @@
+programmation:
+    pattern:  /
+    defaults: { _controller: "CoreTicketsBundle:programmation:index" }
+
+programmation_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreTicketsBundle:programmation:show" }
+
+programmation_new:
+    pattern:  /new
+    defaults: { _controller: "CoreTicketsBundle:programmation:new" }
+
+programmation_create:
+    pattern:  /create
+    defaults: { _controller: "CoreTicketsBundle:programmation:create" }
+    requirements: { _method: post }
+
+programmation_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreTicketsBundle:programmation:edit" }
+
+programmation_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreTicketsBundle:programmation:update" }
+    requirements: { _method: post }
+
+programmation_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreTicketsBundle:programmation:delete" }
+    requirements: { _method: post }
