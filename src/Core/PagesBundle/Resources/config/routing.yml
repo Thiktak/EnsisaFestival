@@ -1,0 +1,23 @@
+festival:
+    pattern:  /festival
+    defaults: { _controller: CorePagesBundle:Pages:festival }
+
+programmation:
+    pattern:  /prog
+    defaults: { _controller: CoreTicketsBundle:Programmation:index }
+
+artistes:
+    pattern:  /artistes
+    defaults: { _controller: CoreTicketsBundle:Artist:index }
+
+artistes_show:
+    pattern:  /artiste-{id}
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+billeterie:
+    pattern:  /billeterie
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+infos:
+    pattern:  /infos
+    defaults: { _controller: CorePagesBundle:Pages:infos }

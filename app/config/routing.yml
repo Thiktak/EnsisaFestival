@@ -1,23 +1,17 @@
-CoreTicketsBundle:
-    resource: "@CoreTicketsBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 _welcome:
     pattern:  /
     defaults: { _controller: CorePagesBundle:Pages:index }
-
-CorePagesBundle:
-    resource: "@CorePagesBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 fos_user:
     resource: "@CoreUserBundle/Resources/config/fos_user_routing.yml"
     prefix: /
 
-CoreUserBundle:
-    resource: "@CoreUserBundle/Resources/config/routing.yml"
+CoreTicketsBundle:
+    resource: "@CoreTicketsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+CorePagesBundle:
+    resource: "@CorePagesBundle/Resources/config/routing.yml"
     prefix:   /
 
 # Internal routing configuration to handle ESI
