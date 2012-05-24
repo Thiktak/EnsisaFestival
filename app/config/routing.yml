@@ -1,3 +1,11 @@
+fos_user:
+    resource: "@CoreUserBundle/Resources/config/fos_user_routing.yml"
+    prefix: /
+
+CoreUserBundle:
+    resource: "@CoreUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

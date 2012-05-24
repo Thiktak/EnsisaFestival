@@ -1,0 +1,62 @@
+@import 'bootstrap.css'
+
+img { max-width: 100%; }
+
+body { font-size: 15px; }
+
+#nav { text-align: center; }
+#nav li { display: inline-block !important; display: inline; }
+#nav li:not(:last-child):after {  }
+#nav li a { color: White; text-decoration: none; }
+#nav li a:hover { color: Green; }
+
+#menu { float: left; width: 160px; }
+#menu a { color: black; text-decoration: none; padding: 3px 5px; display: block; }
+#menu ul { margin: 0; padding: 0; }
+#menu li { list-style-type: none; }
+#menu h1 { font-weight: bold; text-align: center; }
+#menu h1:not(:first-child) { margin-top: 1em; }
+
+#main { }
+#main article { margin: 2em auto; }
+#main > header { font-size: .75em; margin-bottom: 1em; }
+#main header hgroup > * { display: inline-block; }
+#main header hgroup > *:after { content: " > "; }
+#main header hgroup > *:last-child:after { content: ""; }
+#main header hgroup > *:last-child{ font-weight: bold; }
+
+
+#main header aside ul { margin: 5px 0; padding: 0; }
+#main header aside li { display: inline-block; }
+#main header aside li:after { content: " > "; }
+#main header aside li:last-child:after { content: ""; }
+#main header aside li:last-child{ font-weight: bold; }
+#main header h1 { font-size: 1.5em; font-weight: bold; }
+
+article header h1 { text-align: center; font-weight: bold; margin-top: 1em; margin-bottom: 2em; font-size: 1.25em; border-bottom: 1px dotted black; }
+article div h1       { text-align: center; font-weight: bold; margin-top: 1em; margin-bottom: 2em; font-size: 1em; }
+
+
+#main p { text-align: justify; margin: 10px 0; }
+#main p:first-letter { padding-left: .25cm; }
+
+
+
+code { display: inline-block; border: 1px solid #aeaeae; background-color: #eaeaea; padding: 3px; }
+
+
+section form { margin: 2em; }
+section form .input { padding: 5px; }
+section form .input:nth-child(even) { background-color: rgba(0, 0, 0, .05); }
+section form .input label { display: inline-block; }
+section form .input label, section form .input .label { width: 160px; text-align: right; padding-right: 10px; }
+section form .input input, section form .input select, section form .input textarea { }
+section form .input .option { width: auto; margin-left: 175px; text-align: left; display: block; }
+section form .input .option label { width: auto; text-align: left; margin-left: 5px; }
+section form .input .info, section form .input .error { margin: 3px; padding-left: 5px; margin-left: 175px; display: block; font-size: .75em; }
+section form .info   { color: Gray; }
+section form .error { color: Red; padding: 3px; }
+section form .button { text-align: center; }
+
+
+.box-info { background-color: #FFF8C6; border: 1px solid #FFE87C; padding: 5px; margin: 5px; }

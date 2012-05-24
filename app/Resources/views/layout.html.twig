@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link type="text/css" rel="stylesheet" media="screen" href="{{ asset('css/style.css') }}" />
+    </head>
+    <body>
+        <div id="container">
+          <header role="banner">
+            <hgroup class="wrapper">
+              <h1>
+                <img src="/festival/2/img/logo.png" alt="Logo" />
+                Le Festival
+              </h1>
+              <h2>Improbable et intemporel</h2>
+            </hgroup>
+          </header>
+          
+          <nav id="nav" role="navigation">
+            <ul>
+              <li><a href="/festival/2/">Accueil</a></li>
+              <li><a href="/festival/2/pages/festival">Festival</a></li>
+              <li><a href="/festival/2/pages/prog">Programmation</a></li>
+              <li><a href="/festival/2/pages/artistes">Artistes</a></li>
+              <li><a href="/festival/2/pages/billeterie">Billeterie</a></li>
+              <li><a href="/festival/2/pages/infos">Infos pratiques</a></li>
+            </ul>
+          </nav>
+          
+          <div id="content"  class="wrapper">
+            <aside id="menu">
+              <h1>Et aussi ...</h1>
+              <h2>Places restantes</h2>
+              <ul>
+                <li>Pass 3 jours: 40</li>
+                <li>Pass vendredi: 60</li>
+                <li>Pass samedi: 50</li>
+                <li>Pass dimanche: 70</li>
+              </ul>
+              
+              <h2>La selection du jour</h2>
+              <figure class="user">
+                <img src="/festival/2/img/artistes/david-bowie_mini.jpg" alt="Utilisateur David Bowie" />            <figcaption>
+                  <span class="name">David Bowie</span>
+                  <span class="info">Folk - Royaume-Uni</span>
+                </figcaption>
+              </figure>
+              
+              <h2>Et ailleurs</h2>
+              <ul>
+                <li><a href="?page=accueil">Festival les inRocks</a></li>
+              </ul>
+            </aside>
+            
+            <section id="main" role="main">
+            
+                {% block body %}{% endblock %}
+            </section>
+        
+            <!-- bientot balise <separator /> -->
+            <br style="clear: both;" />
+          </div>
+          
+
+          <footer role="contentinfo" class="wrapper">
+            <ul class="social">
+              <li><a href="http://facebook.com/thiktak" class="facebook"></a></li>
+              <li><a href="http://twitter.com/#!OlivaresGeorges" class="twitter"></a></li>
+              <li><a href="http://youtube.com" class="youtube"></a></li>
+            </ul>
+            
+            <ul class="links">
+              <li>Copyright 2012</li>
+              <li>Original design by Tkîktak</li>
+              <li>Mentions legales</li>
+              <li><a href="/ENSISA/TP/festival/cake/pages/changelog">Changelog</a></li>
+            </ul>
+            <a href="http://card.olivares-georges.fr">Olivarès Georges</a> - <a href="http://validator.w3.org/check?uri=referer"><img
+          src="./www/images/html5-badge-h-semantics.png" alt="Valid HTML5" /></a>
+          </footer>
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
