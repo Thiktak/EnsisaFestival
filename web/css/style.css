@@ -13,6 +13,7 @@ body {
 .wrapper {
 	width: 920px;
 	margin: auto auto;
+	position: relative;
 }
 
 a { color: #05a4d1; text-decoration: none; }
@@ -152,11 +153,9 @@ article div h1       { text-align: center; font-weight: bold; margin-top: 1em; m
 #main p { text-align: justify; margin: 10px 0; }
 #main p:first-letter { padding-left: .25cm; }
 
-
-
 code { display: inline-block; border: 1px solid #aeaeae; background-color: #eaeaea; padding: 3px; }
 
-
+/*
 section form { margin: 2em; }
 section form .input { padding: 5px; }
 section form .input:nth-child(even) { background-color: rgba(0, 0, 0, .05); }
@@ -169,10 +168,12 @@ section form .input .info, section form .input .error { margin: 3px; padding-lef
 section form .info   { color: Gray; }
 section form .error { color: Red; padding: 3px; }
 section form .button { text-align: center; }
-
+*/
 
 .box-info { background-color: #FFF8C6; border: 1px solid #FFE87C; padding: 5px; margin: 5px; }
 
 footer ul.links { color: Black; text-transform: uppercase; }
 footer ul.links li { color: DarkGray; margin: 0; padding: 0; display: inline-block; list-style-type: none; opacity: .75; font-size: .75em; }
 footer ul.links li:not(:first-child):before { content: " | "; }
+
+m { font-weight: bold; }

@@ -1,5 +1,12 @@
 <?php
 
+function EntityDump($var)
+{
+	echo '<pre class="alert alert-box alert-info" style="margin: .5em;">';
+	\Doctrine\Common\Util\Debug::dump($var);
+	echo '</pre>';
+}
+
 // if you don't want to setup permissions the proper way, just uncomment the following PHP line
 // read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 //umask(0000);

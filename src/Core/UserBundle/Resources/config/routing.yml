@@ -1,3 +1,23 @@
-CoreUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CoreUserBundle:Default:index }
+festival:
+    pattern:  /festival
+    defaults: { _controller: CorePagesBundle:Pages:festival }
+
+programmation:
+    pattern:  /prog
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+artistes:
+    pattern:  /artistes
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+artistes_show:
+    pattern:  /artiste-{id}
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+billeterie:
+    pattern:  /billeterie
+    defaults: { _controller: CorePagesBundle:Pages:index }
+
+infos:
+    pattern:  /infos
+    defaults: { _controller: CorePagesBundle:Pages:infos }

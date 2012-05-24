@@ -1,0 +1,7 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+  {% for item in slide %}
+    <img src="{{asset(item)}}" style="max-height: 100px; max-width: 100px" />
+  {% endfor %}
+{% endblock %}

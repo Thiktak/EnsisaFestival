@@ -20,12 +20,12 @@
           
           <nav id="nav" role="navigation">
             <ul>
-              <li><a href="/festival/2/">Accueil</a></li>
-              <li><a href="/festival/2/pages/festival">Festival</a></li>
-              <li><a href="/festival/2/pages/prog">Programmation</a></li>
-              <li><a href="/festival/2/pages/artistes">Artistes</a></li>
-              <li><a href="/festival/2/pages/billeterie">Billeterie</a></li>
-              <li><a href="/festival/2/pages/infos">Infos pratiques</a></li>
+              <li><a href="{{ path('_welcome') }}">Accueil</a></li>
+              <li><a href="{{ path('festival') }}">Festival</a></li>
+              <li><a href="{{ path('programmation') }}">Programmation</a></li>
+              <li><a href="{{ path('artistes') }}">Artistes</a></li>
+              <li><a href="{{ path('billeterie') }}">Billeterie</a></li>
+              <li><a href="{{ path('infos') }}">Infos pratiques</a></li>
             </ul>
           </nav>
           
@@ -81,6 +81,9 @@
           src="./www/images/html5-badge-h-semantics.png" alt="Valid HTML5" /></a>
           </footer>
         </div>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script src="http://web.ensisa.olivares-georges.fr/festival/2/app/webroot/js/script.js"></script>
+        {% endblock %}
     </body>
 </html>
