@@ -9,6 +9,32 @@
     <body>
         <div id="container">
           <header role="banner">
+            <div class="wrapper" style="z-index: 999">
+              <ul id="nav-user" class="pull-right">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li class="btn btn-inverse dropdown">
+                  <a class="user-badge dropdown-toggle" data-toggle="dropdown" href="#">
+                    {{ app.user.username }}
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+
+                    <li><a href="{{ path('fos_user_profile_show', {id: app.user.id}) }}">Mon profil</a></li>
+                    <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                  </ul>
+                </li>
+            {% else %}
+                <li class="btn btn-inverse">
+                  <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+                </li>
+                <li class="btn btn-inverse">
+                  <a href="{{ path('fos_user_registration_register') }}">S'inscrire'</a>
+                </li>
+            {% endif %}
+              </ul>
+            </div>
             <hgroup class="wrapper">
               <h1>
                 <img src="/festival/2/img/logo.png" alt="Logo" />
@@ -55,7 +81,6 @@
             </aside>
             
             <section id="main" role="main">
-            
                 {% block body %}{% endblock %}
             </section>
         
@@ -77,13 +102,13 @@
               <li>Mentions legales</li>
               <li><a href="/ENSISA/TP/festival/cake/pages/changelog">Changelog</a></li>
             </ul>
-            <a href="http://card.olivares-georges.fr">Olivarès Georges</a> - <a href="http://validator.w3.org/check?uri=referer"><img
-          src="./www/images/html5-badge-h-semantics.png" alt="Valid HTML5" /></a>
+            <a href="http://card.olivares-georges.fr">Olivarès Georges</a> - <a href="http://validator.w3.org/check?uri=referer"><img src="./www/images/html5-badge-h-semantics.png" alt="Valid HTML5" /></a>
           </footer>
         </div>
         {% block javascripts %}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
         <script src="http://web.ensisa.olivares-georges.fr/festival/2/app/webroot/js/script.js"></script>
+        <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
         {% endblock %}
     </body>
 </html>

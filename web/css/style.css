@@ -42,7 +42,7 @@ a { color: #05a4d1; text-decoration: none; }
 #content h1 { color: #a4aa04; font-weight: bold; text-transform: uppercase; }
 #content h2 { color: #888893; font-weight: bold; }
 #content ul { margin-left: 20px; }
-#content li { padding-left: 5px; list-style-image: url('../img/puce.png'); }
+.content li { padding-left: 5px; list-style-image: url('../img/puce.png'); }
 #content section header h1 { font-size: 2em; }
 #content section div h1 { text-transform: uppercase; }
 #content section div h1, #content section div h2 { font-size: 1.25em; }
@@ -130,9 +130,10 @@ body { font-size: 15px; }
 #menu h1 { font-weight: bold; text-align: center; }
 #menu h1:not(:first-child) { margin-top: 1em; }
 
-#main { }
+#main { padding-right: 200px; position: relative; /*overflow: hidden;*/ }
 #main article { margin: 2em auto; }
 #main > header { font-size: .75em; margin-bottom: 1em; }
+#main header hgroup { display: inline-block; }
 #main header hgroup > * { display: inline-block; }
 #main header hgroup > *:after { content: " > "; }
 #main header hgroup > *:last-child:after { content: ""; }
