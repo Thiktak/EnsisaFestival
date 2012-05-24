@@ -1,0 +1,7 @@
+parameters:
+#    core_user.example.class: Core\UserBundle\Example
+
+services:
+#    core_user.example:
+#        class: %core_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
