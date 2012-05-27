@@ -57,8 +57,8 @@ class ArtistController extends Controller
 
         return $this->render('CoreTicketsBundle:Artist:index.html.twig', array(
             'entities'  => $entities->getQuery()->getResult(), // On récupère toutes les données avec les filtres
-            'countries' => $filters['countries'],
-            'genders'   => $filters['genders']
+            'countries' => array_unique($filters['countries']),
+            'genders'   => array_unique($filters['genders'])
         ));
     }
 
