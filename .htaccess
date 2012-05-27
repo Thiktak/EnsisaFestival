@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ web/app.php [QSA,L]
+    RewriteRule ^(.*)$ web/$1 [QSA,L]
 </IfModule>
