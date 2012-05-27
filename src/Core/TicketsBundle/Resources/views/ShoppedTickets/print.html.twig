@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <style>
+      * { font-family: Calibri, Verdana, Arial; font-size: 16px; }
+
+      html, body { height: 100%; width: 100%; padding: 0; margin: 0; }
+      body { margin: auto auto; width: 27cm; height: 18cm; }
+      body section { width: 50%; height: 50%; float: left; }
+      body article { width: 100%; height: 100%; }
+
+      #s1 > article { border-right:  1px solid gray; border-bottom: 1px solid gray; }
+      #s2 > article { border-bottom: 1px solid gray; }
+      #s3 > article { border-right:  1px solid gray; }
+
+      table { height: 18cm; width: 27cm; border-collapse: collapse;}
+      table td { width: 50%; height: 50%; border: 1px dotted #eaeaea; padding: 1em; vertical-align: top; }
+
+      h1 { font-size: 1.5em; border-bottom: 1px solid black; }
+
+      #billet {
+        background-color: #eaeaea;
+        padding: 1em;
+        padding-right: 140px;
+      }
+      #billet #qrcode { float: right; margin-right: -130px; }
+      #billet #pass h1 { margin: 0; padding: 0; font-size: 1.5em; font-weight: bold; }
+      #billet #pass ul { margin: 0; padding: 0; text-align: center; }
+      #billet #pass li { margin: 0; padding: 0; font-size: .6em; display: inline-block; }
+      #billet #pass li:not(:last-child):after { content: ', '; }
+
+      #billet #bc1 {}
+
+      #billet #bc2 { font-size: .75em; }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>Votre billet electronique</h1>
+          <p>
+            Merci d'avoir acheté un billet pour <strong>le festival</string>.
+          </p>
+        </td>
+        <td><a href="{{ url }}">CHECK</a></td>
+      </tr>
+      <tr>
+        <td>
+          <h1>Condition générales</h1>
+        </td>
+        <td>
+          <div id="billet">
+            <img id="qrcode" src="{{qrcode}}" />
+            <div id="pass">
+              <h1>{{entity.tickets.title}}</h1>
+              <ul>
+                {% for prog in entity.tickets.programmations %}
+                  <li>{{ prog.title }} ({{ prog.date|date('d/m/Y') }})</li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <div id="bc1">
+              <h2>Nom prénom : {{entity.name}}</h2>
+            </div>
+
+            <div id="bc2">
+              Acheteur: {{ entity.user }}<br />
+              Date de commande: {{ entity.date|date('d/m/Y') }}<br />
+              Numéro du billet: {{ entity.token }}
+            </div>
+
+            <br style="clear: both" />
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html

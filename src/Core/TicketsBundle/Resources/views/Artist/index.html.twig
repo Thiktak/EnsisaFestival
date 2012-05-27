@@ -4,7 +4,7 @@
 <header>
   <aside>
     <ul class="breadcrumb">
-      <li><a href="/">Accueil</a></li>
+      <li><a href="{{ path('_welcome') }}">Accueil</a></li>
       <li>Artistes</li>
     </ul>
   </aside>
@@ -52,4 +52,8 @@
 </figure>
 <br />
 {% endfor %}
+{% endblock %}
+
+{% block admin_menu %}
+
 {% endblock %}

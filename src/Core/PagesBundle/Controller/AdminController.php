@@ -11,16 +11,11 @@ class AdminController extends Controller
     public function indexAction()
     {
         return $this->render('CorePagesBundle:Pages:admin.index.html.twig', array(
+            'modules' => array(
+                'CorePagesController' => array(
+                  'CorePagesController:edito' => 'Edito'
+                ),
+            )
         ));
-    }
-
-    public function infosAction()
-    {
-        return $this->render('CorePagesBundle:Pages:infos.html.twig');
-    }
-
-    public function festivalAction()
-    {
-        return $this->render('CorePagesBundle:Pages:festival.html.twig');
     }
 }

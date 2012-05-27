@@ -17,3 +17,6 @@ web/bundles/*
 
 # Configuration files
 app/config/parameters.ini
+
+# tmp files
+*~

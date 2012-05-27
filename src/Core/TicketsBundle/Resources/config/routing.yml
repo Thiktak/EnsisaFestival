@@ -1,8 +1,56 @@
+artist:
+    pattern:  /artiste
+    defaults: { _controller: "CoreTicketsBundle:Artist:index" }
+
+artist_view:
+    pattern:  /artiste/{id}
+    defaults: { _controller: "CoreTicketsBundle:Artist:show" }
+
 CoreTicketsBundle_artist:
     resource: "@CoreTicketsBundle/Resources/config/routing/artist.yml"
-    prefix:   /artiste
+    prefix:   /admin/artiste
+
+programmation:
+    pattern:  /programmation
+    defaults: { _controller: "CoreTicketsBundle:programmation:index" }
 
 CoreTicketsBundle_programmation:
     resource: "@CoreTicketsBundle/Resources/config/routing/programmation.yml"
     prefix:   /programmation
 
+CoreTicketsBundle_ticket:
+    resource: "@CoreTicketsBundle/Resources/config/routing/tickets.yml"
+    prefix:   /admin/tickets
+
+CoreTicketsBundle_shoppedtickets:
+    resource: "@CoreTicketsBundle/Resources/config/routing/shoppedtickets.yml"
+    prefix:   /admin/pass
+
+pass_shop:
+    pattern:   /user/pass/shop/{id}
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:new" }
+
+pass_shop_create:
+    pattern:   /user/pass/create
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:create" }
+    requirements: { _method: post }
+
+paid:
+    pattern:   /user/paid
+    defaults: { _controller: "CoreTicketsBundle:Paypal:process" }
+
+paid_cancel:
+    pattern:   /user/paid/cancel
+    defaults: { _controller: "CoreTicketsBundle:Paypal:cancel" }
+
+paid_return:
+    pattern:   /user/paid/return
+    defaults: { _controller: "CoreTicketsBundle:Paypal:return" }
+
+pass_print:
+    pattern:   /user/pass/print/{id}
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:print" }
+
+pass_check:
+    pattern:   /pass/check/{id}-{salt}
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:check" }

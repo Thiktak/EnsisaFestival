@@ -1,0 +1,56 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li>Les pass</li>
+    </ul>
+  </aside>
+  <h1>Liste des pass</h1>
+</header>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Payé ?</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('pass_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                {{ entity.tickets }}
+
+                {% if entity.paid %}
+                <span class="label label-success pull-right">Payé</span>
+                {% else %}
+                <span class="label label-important pull-right">Non payé</span>
+                {% endif %}
+                <span style="display: block; font-size: .5em">{{ entity.token }}</span>
+            </td>
+            <td>
+                <ul class="btn-group">
+                    <li class="btn btn-mini">
+                        <a href="{{ path('pass_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                    </li>
+                    <li class="btn btn-mini">
+                        <a href="{{ path('pass_print', { 'id': entity.id }) }}" data-target="print"><i class="icon-print"></i></a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

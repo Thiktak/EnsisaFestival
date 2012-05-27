@@ -140,11 +140,14 @@ body { font-size: 15px; }
 #main header hgroup > *:last-child{ font-weight: bold; }
 
 
-#main header aside ul { margin: 5px 0; padding: 0; }
-#main header aside li { display: inline-block; }
-#main header aside li:after { content: " > "; }
-#main header aside li:last-child:after { content: ""; }
-#main header aside li:last-child{ font-weight: bold; }
+#main header aside ul.breadcrumb { margin: 0; padding: 0 2px; opacity: .5; border: none; background: none; }
+#main header aside ul li > a { color: DarkGray; }
+#main header aside ul.breadcrumb li { display: inline-block; }
+#main header aside ul.breadcrumb li:after { content: " > "; }
+#main header aside ul.breadcrumb li:last-child:after { content: ""; }
+#main header aside ul.breadcrumb li:last-child{ font-weight: bold; }
+#main header aside ul.actions { margin-top: -1.5em; }
+#main header aside ul.actions > li { list-style-type: none; }
 #main header h1 { font-size: 1.5em; font-weight: bold; }
 
 article header h1 { text-align: center; font-weight: bold; margin-top: 1em; margin-bottom: 2em; font-size: 1.25em; border-bottom: 1px dotted black; }
@@ -178,3 +181,26 @@ footer ul.links li { color: DarkGray; margin: 0; padding: 0; display: inline-blo
 footer ul.links li:not(:first-child):before { content: " | "; }
 
 m { font-weight: bold; }
+
+
+
+img.img-small { max-height: 50px; max-width: 50px; }
+
+
+aside.admin { text-align: center; }
+aside.admin ul { margin: 0; margin-top: 1em; padding: 0; }
+aside.admin li { margin: 0; padding: 0; list-style-type:none; }
+
+
+
+.m-center { margin-right: 0; margin-left: 0; }
+.t-center { text-align: center; }
+.t-right  { text-align: right; }
+
+
+
+#content > aside #recentcomments ul { margin: 0; padding: 0; }
+#content > aside #recentcomments li { padding: 0; margin: 0; margin-bottom: .5em; list-style-image: none; }
+#content > aside #recentcomments a { padding: 0; }
+#content > aside #recentcomments li * { font-size: 11px; display: inline; }
+#content > aside #recentcomments p { padding: 0; margin: 0; display: inline-block; }

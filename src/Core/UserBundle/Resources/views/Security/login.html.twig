@@ -4,19 +4,52 @@
 {% if error %}
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
+<header>
+  <h1>Connexion à la Billeterie</h1>
+</header>
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+<div class="row-fluid">
+  <div class="span6">
+    <h2>Vous avez déjà un compte</h2>
 
-    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="t-center">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="password" id="password" name="_password" />
+        <div>
+          <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+        
+        <div>
+          <input type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+        
+        <div>
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+          <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        </div>
+        
+        <br />
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        <div>
+          <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn" />
+        </div>
+    </form>
+  </div>
+  <div class="span6">
+    <h2>Vous êtes un nouveau festivalier</h2>
+    Bienvenue !
+    Enregistrez-vous pour commander et accéder à nos services :
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-</form>
+    <p style="text-align: center">
+      <a href="{{ path('fos_user_registration_register') }}" class="btn btn-warning">Créer un compte</a>
+    </p>
+  </div>
+</div>
+
+<hr />
+
+<p style="font-size: .75em;">
+  Nous nous engageons à sécuriser vos informations et à les garder strictement confidentielles.<br />
+  Pour en savoir plus et connaître nos services, cliquez ici.
+</p>
 {% endblock fos_user_content %}

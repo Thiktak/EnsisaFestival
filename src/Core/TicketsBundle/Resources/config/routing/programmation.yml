@@ -1,6 +1,6 @@
-programmation:
+programmation_list:
     pattern:  /
-    defaults: { _controller: "CoreTicketsBundle:programmation:index" }
+    defaults: { _controller: "CoreTicketsBundle:programmation:list" }
 
 programmation_show:
     pattern:  /{id}/show

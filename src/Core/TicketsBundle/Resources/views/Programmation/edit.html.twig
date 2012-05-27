@@ -2,7 +2,15 @@
 
 {% block body %}
 
-<h1>Programmation edit</h1>
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('programmation_list') }}">Programmations</a></li>
+    </ul>
+  </aside>
+  <h1>Edition d'une programmation ({{ entity.title }})</h1>
+</header>
 
 <form action="{{ path('programmation_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}

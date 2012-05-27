@@ -62,6 +62,17 @@ class ArtistController extends Controller
         ));
     }
 
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entity = $em->getRepository('CoreTicketsBundle:Artist')->findAll();
+
+        return $this->render('CoreTicketsBundle:Artist:list.html.twig', array(
+            'entities' => $entity,
+        ));
+    }
+
     /**
      * Finds and displays a Artist entity.
      *

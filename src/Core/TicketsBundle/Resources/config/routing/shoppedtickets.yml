@@ -1,0 +1,34 @@
+pass:
+    pattern:  /
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:list" }
+
+pass_list:
+    pattern:  /
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:list" }
+
+pass_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:show" }
+
+pass_new:
+    pattern:  /new
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:new" }
+
+pass_create:
+    pattern:  /create
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:create" }
+    requirements: { _method: post }
+
+pass_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:edit" }
+
+pass_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:update" }
+    requirements: { _method: post }
+
+pass_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreTicketsBundle:ShoppedTickets:delete" }
+    requirements: { _method: post }

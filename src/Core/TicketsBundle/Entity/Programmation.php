@@ -36,9 +36,21 @@ class Programmation
     protected $title;
 
     /**
+     * @var integer $stock
+     *
+     * @ORM\Column(name="stock", type="integer")
+     */
+    protected $stock;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="\Core\TicketsBundle\Entity\Artist", mappedBy="programmations")
      */
     protected $artists;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="\Core\TicketsBundle\Entity\Tickets", mappedBy="programmations")
+     */
+    protected $tickets;
 
 
     public function __toString() {
@@ -117,5 +129,45 @@ class Programmation
     public function getArtists()
     {
         return $this->artists;
+    }
+
+    /**
+     * Set stock
+     *
+     * @param integer $stock
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+    }
+
+    /**
+     * Get stock
+     *
+     * @return integer 
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Add tickets
+     *
+     * @param Core\TicketsBundle\Entity\Tickets $tickets
+     */
+    public function addTickets(\Core\TicketsBundle\Entity\Tickets $tickets)
+    {
+        $this->tickets[] = $tickets;
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

@@ -12,6 +12,7 @@ class ProgrammationType extends AbstractType
         $builder
             ->add('date')
             ->add('title')
+            ->add('stock')
             ->add('artists')
         ;
     }

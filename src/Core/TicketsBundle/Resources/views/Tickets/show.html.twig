@@ -1,0 +1,47 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('tickets_list') }}">Tickets</a></li>
+    </ul>
+  </aside>
+  <h1>Voir un ticket</h1>
+</header>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('tickets') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tickets_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('tickets_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}

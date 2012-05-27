@@ -1,0 +1,24 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<div class="alert alert-block alert-error">
+  <h1>Page protégée</h1>
+
+  <p>
+    Désolé, mais vous n'avez pas les droits nécéssaires pour accéder à cette page !
+  </p>
+  
+  <p style="text-align: center;">
+    {% for role in requiredRoles %}
+      {{ role }}
+    {% endfor %}
+  </p>
+
+</div>
+
+<p style="text-align: center;">
+  <img src="http://theoccultsection.com/wp-content/uploads/2011/01/denied.gif" alt="Denied Access" />
+</p>
+
+{% endblock %}

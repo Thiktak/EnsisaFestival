@@ -44,7 +44,7 @@ class ProgrammationController extends Controller
      * @Route("/admin/programmation", name="admin_programmation")
      * @Template()
      */
-    public function AdminIndexAction()
+    public function listAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 

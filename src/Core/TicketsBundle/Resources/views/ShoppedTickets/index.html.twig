@@ -1,0 +1,89 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('_welcome') }}">Accueil</a></li>
+      <li>Billeterie</li>
+    </ul>
+  </aside>
+  <h1>Billeterie</h1>
+</header>
+
+<div class="row-fluid">
+  <div class="span7 well content">
+    <h1>Mes billets</h1>
+    <ul>
+      {% for entity in entities %}
+      <li style="margin-top: 1em">
+        <span class="label label-info">{{ entity.tickets.title }}</span>
+        pour <strong>{{ entity.name }}</strong>
+
+
+        {% if entity.paid %}
+        <a href="{{ www }}{{ path('pass_print', {id: entity.id}) }}" onclick="return !window.open(this.href);" class="icon-print pull-right" style="margin-left: .5em"></a>
+
+        <span class="label label-success pull-right">Payé</span>
+        {% else %}      
+        <span class="label label-important pull-right">Non payé ({{entity.tickets.price}} €)</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% if paid.total > 0 %}
+    <br />
+    <br />
+
+    <div class="alert alert-error">
+      <p>
+        Vous devez encore payer (sous 24h) pour valider la commande.
+      </p>
+      <p style="text-align: center">
+        Pseudo: <strong class="label label-warning">olivar_1338071045_per@gmail.com</strong><br />
+        Mot de passe: <strong class="label label-warning">123456789</strong><br />
+      </p>
+      <p style="text-align: center">
+
+
+        <a href="{{ path('paid') }}" class="btn btn-danger">Procéder au paiement ({{ paid.total }} €)</a>
+        
+        <br /><br />
+
+        <a href="#" onclick="javascript:window.open('https://www.paypal.com/fr/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/fr_FR/FR/i/logo/PayPal_mark_50x34.gif" border="0" alt="Payer avec Paypal" /></a>
+      </p>
+
+    </div>
+    {% endif %}
+  </div>
+  <div class="span5 well">
+    <h1>Acheter un billet</h1>
+      
+      <div style="text-align: center;">
+        {% for ticket in tickets %}
+        <a href="{{ path('pass_shop', {id: ticket.id}) }}" class="btn" style="display: block">
+          <strong>{{ticket.title}}</strong>
+          <span class="pull-right">{{ ticket.price }} &euro;</span>
+        </a>
+        <span style="font-size: .75em">
+          {% for prog in ticket.programmations %}
+                {% for artist in prog.artists %}
+                    {{ artist }}
+                    {%- if not loop.last -%}
+                        ,
+                    {%- endif -%}
+                {% endfor %}
+                    {%- if not loop.last -%}
+                    <br />
+                    {%- endif -%}
+        {% endfor %}
+        </span>
+        <hr />
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+{% endblock %}

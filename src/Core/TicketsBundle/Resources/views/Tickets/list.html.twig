@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('tickets_list') }}">Tickets</a></li>
+    </ul>
+  </aside>
+  <h1>Liste des tickets</h1>
+</header>
+
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('tickets_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.title }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tickets_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tickets_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<aside class="admin">
+    <ul>
+        <li>
+            <a href="{{ path('tickets_new') }}" class="btn btn-success">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+</admin>
+{% endblock %}

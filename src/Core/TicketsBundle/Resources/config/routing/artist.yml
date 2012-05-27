@@ -1,6 +1,6 @@
-artist:
+artist_list:
     pattern:  /
-    defaults: { _controller: "CoreTicketsBundle:Artist:index" }
+    defaults: { _controller: "CoreTicketsBundle:Artist:list" }
 
 artist_show:
     pattern:  /{id}/show

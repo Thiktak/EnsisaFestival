@@ -1,0 +1,32 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('_welcome') }}">Accueil</a></li>
+      <li>Billeterie</li>
+    </ul>
+  </aside>
+  <h1>Billeterie</h1>
+</header>
+
+<h1>ShoppedTickets creation</h1>
+
+<form action="{{ path('pass_shop_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('pass') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

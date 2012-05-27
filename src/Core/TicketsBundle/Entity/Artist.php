@@ -45,35 +45,35 @@ class Artist
     /**
      * @var text $descr
      *
-     * @ORM\Column(name="descr", type="text")
+     * @ORM\Column(name="descr", type="text", nullable="true")
      */
     private $descr;
 
     /**
      * @var text $page
      *
-     * @ORM\Column(name="page", type="text")
+     * @ORM\Column(name="page", type="text", nullable="true")
      */
     private $page;
 
     /**
      * @var string $www
      *
-     * @ORM\Column(name="www", type="string", length=255)
+     * @ORM\Column(name="www", type="string", length=255, nullable="true")
      */
     private $www;
 
     /**
      * @var string $youtube
      *
-     * @ORM\Column(name="youtube", type="string", length=255)
+     * @ORM\Column(name="youtube", type="string", length=255, nullable="true")
      */
     private $youtube;
 
     /**
      * @var string $image
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable="true")
      */
     private $image;
 

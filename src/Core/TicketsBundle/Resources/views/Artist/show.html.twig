@@ -1,65 +1,80 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-<h1>Artist</h1>
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="/">Accueil</a></li>
+      <li><a href="{{ path('artist') }}">Artistes</a></li>
+    </ul>
+    <ul class="actions pull-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Actions
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('artist_edit', {id: entity.id}) }}"><i class="icon-edit"></i> Editer</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('programmation_new', {artist: entity.id}) }}"><i class="icon-plus"></i> Ajouter une programmation</a></li>
+            </ul>
+        </li>
+    </ul>
+  </aside>
+  <h1><a href="{{ path('artist') }}">Artiste</a> &gt; {{ entity.name }}</h1>
+</header>
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>{{ entity.name }}</td>
-        </tr>
-        <tr>
-            <th>Gender</th>
-            <td>{{ entity.gender }}</td>
-        </tr>
-        <tr>
-            <th>Country</th>
-            <td>{{ entity.country }}</td>
-        </tr>
-        <tr>
-            <th>Descr</th>
-            <td>{{ entity.descr }}</td>
-        </tr>
-        <tr>
-            <th>Page</th>
-            <td>{{ entity.page }}</td>
-        </tr>
-        <tr>
-            <th>Www</th>
-            <td>{{ entity.www }}</td>
-        </tr>
-        <tr>
-            <th>Youtube</th>
-            <td>{{ entity.youtube }}</td>
-        </tr>
-        <tr>
-            <th>Image</th>
-            <td>{{ entity.image }}</td>
-        </tr>
-    </tbody>
-</table>
+<img src="{{ asset('img/artistes/' ~ entity.image) }}" class="pull-right" />
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('artist') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('artist_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('artist_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<br />
+
+<p style="text-align: center; margin-right: 160px">
+    Genre: {{ entity.gender}} - Pays: {{ entity.country }}
+
+    {% if entity.www %}<br /><br />
+    Site internet: <a href="{{ entity.www }}" onclick="return !window.open(this.href);">{{ entity.www }}</a> {% endif %}
+</p>
+
+<p class="alert alert-info" style="text-align: center; font-weight: bold; margin-right: 170px;">
+    Programmation:<br /><br />
+    {% for prog in entity.programmations %}
+        <span class="btn">{{ prog.date|date('d/m/Y') }} ({{ prog.title }})</span>
+    {% endfor %}
+</p>
+
+<br class="clearfix" />
+
+<p class="well">
+    {{ entity.page|nl2br }}
+</p>
+
+
+{% if entity.youtube %}
+<script>
+    document.write('<iframe type="text/html" src="{{ entity.youtube }}" style="width: 640px; height: 385px"></iframe>');
+</script>
+{% endif %}
+
+<br /><br />
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_developer  = 1;
+    var disqus_shortname  = 'ensisa-festival-improbable'; // required: replace example with your forum shortname
+    //var disqus_url        = 'http://festival.ensisa.olivares-georges.fr/artiste/{{entity.id}}';
+    var disqus_identifier = 'artiste-{{entity.id}}';
+    var disqus_title      = 'Artiste {{entity.name}}';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 {% endblock %}

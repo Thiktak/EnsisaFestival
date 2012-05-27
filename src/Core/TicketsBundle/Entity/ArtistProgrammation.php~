@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Core\TicketsBundle\Entity\ArtistProgrammation
  *
- * @ORM\Table()
+ * @ORM\Table(name="artist_programmation")
  * @ORM\Entity
  */
 class ArtistProgrammation

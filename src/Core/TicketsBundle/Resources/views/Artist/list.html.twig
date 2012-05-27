@@ -1,31 +1,39 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-<h1>Artist list</h1>
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('artist_list') }}">Artistes</a></li>
+    </ul>
+  </aside>
+  <h1>Liste des artistes</h1>
+</header>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Name (Gender - Country)</th>
-            <th>Descr</th>
+            <th colspan="2">Name (Gender - Country)</th>
             <th>Www - Youtube</th>
-            <th>Image</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
+            <td><img src="{{ asset('img/artistes/' ~ entity.image) }}" class="img-small" /></td>
             <td>
                 {{ entity.name }}
                 ({{ entity.gender }} - {{ entity.country }})
+                <p style="color: gray; font-size: .75em">
+                    {{ entity.descr }}
+                </p>
             </td>
-            <td>{{ entity.descr }}</td>
             <td>
-                {{ entity.www }}
-                {{ entity.youtube }}
+                <a href="{{ entity.www }}">www</a>
+                <a href="{{ entity.youtube }}">Youtube</a>
             </td>
-            <td>{{ entity.image }}</td>
             <td>
                 <ul>
                     <li>
@@ -41,11 +49,13 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('artist_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+<aside class="admin">
+    <ul>
+        <li>
+            <a href="{{ path('artist_new') }}" class="btn btn-success">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+</aside>
 {% endblock %}

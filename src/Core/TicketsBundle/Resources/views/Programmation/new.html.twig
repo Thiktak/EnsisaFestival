@@ -1,8 +1,15 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-
-<h1>Programmation creation</h1>
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('programmation_list') }}">Programmations</a></li>
+    </ul>
+  </aside>
+  <h1>Ajouter une programmation</h1>
+</header>
 
 <form action="{{ path('programmation_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
@@ -13,7 +20,7 @@
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('programmation') }}">
+        <a href="{{ path('programmation_list') }}">
             Back to the list
         </a>
     </li>

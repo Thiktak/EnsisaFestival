@@ -1,0 +1,38 @@
+
+              <h1>Et aussi ...</h1>
+              <h2>Places restantes</h2>
+              <ul>
+                {% for ticket in tickets %}
+                {% if ticket.programmations|length >= 1 %}
+                <li>{{ ticket.title }} : {{ticket.stock}}</li>
+                {% endif %}
+
+                {#
+                <li class="divider"></li>
+
+                {% if ticket.programmations|length > 1 %}
+                <li>{{ ticket.title }}</li>
+                {% endif %}#}
+
+                {% endfor %}
+              </ul>
+              
+              <h2>La selection du jour</h2>
+              <figure class="user">
+                <img src="{{ asset('img/artistes/' ~ artist.image )}}" alt="{{ artist }}" />
+                <figcaption>
+                  <span class="name">{{ artist }}</span>
+                  <span class="info">{{ artist.gender }} - {{ artist.country }}</span>
+                </figcaption>
+              </figure>
+              
+              <h2>Et ailleurs</h2>
+              <ul>
+                <li><a href="?page=accueil">Festival les inRocks</a></li>
+              </ul>
+
+              <div id="recentcomments" class="dsq-widget">
+                <h2 class="dsq-widget-title">Commentaires</h2>
+                <script type="text/javascript" src="http://ensisa-festival-improbable.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=0&amp;avatar_size=32&amp;excerpt_length=100"></script>
+                <a href="http://disqus.com/" class="t-right" style="font-size: .5em">Powered by Disqus</a>
+              </div>

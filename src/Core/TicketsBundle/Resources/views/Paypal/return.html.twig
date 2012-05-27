@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('_welcome') }}">Accueil</a></li>
+      <li><a href="{{ path('billeterie') }}">Billeterie</a></li>
+    </ul>
+  </aside>
+  <h1>Félicitation !</h1>
+</header>
+
+<div>
+    <p style="text-align: center">
+      <a href="{{ path('billeterie') }}">Retour à la billeterie</a>
+    </p>
+
+    <hr />
+
+    <ul>
+        {% for entity in entities %}
+      <li class="alert alert-success" style="margin-top: 1em">
+        <span class="label label-info">{{ entity.tickets.title }}</span>
+        pour <strong>{{ entity.name }}</strong>
+
+
+        {% if entity.paid %}
+        <span class="label label-success pull-right">Payé</span>
+        {% else %}      
+        <span class="label label-important pull-right">Non payé ({{entity.tickets.price}} €)</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

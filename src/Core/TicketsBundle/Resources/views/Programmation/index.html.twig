@@ -5,7 +5,7 @@
 <header>
   <aside>
     <ul class="breadcrumb">
-      <li><a href="/">Accueil</a></li>
+      <li><a href="{{ path('_welcome') }}">Accueil</a></li>
       <li>Programmation</li>
     </ul>
   </aside>
@@ -28,9 +28,9 @@
       {% for item in datas %}
         <li>
             <figure class="user">
-                <img src="{{ asset('img/artistes/' ~ item.artist.image) }}" alt="{{ item.artist.name }}">
+                <img src="{{ asset('img/artistes/' ~ item.artist.image) }}" alt="{{ item.artist.name }}" />
                 <figcaption>
-                    <span class="name"><a href="{{ path('artist_show', {id: item.artist.id}) }}">{{ item.artist.name }}</a></span>
+                    <span class="name"><a href="{{ path('artist_view', {id: item.artist.id}) }}">{{ item.artist.name }}</a></span>
                     <span class="info">{{ item.artist.gender }} - {{ item.artist.country }}</span>
                 </figcaption>
             </figure>

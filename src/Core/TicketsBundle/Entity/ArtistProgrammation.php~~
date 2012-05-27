@@ -7,10 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Core\TicketsBundle\Entity\ArtistProgrammation
  *
- * @ORM\Table()
  * @ORM\Entity
  */
-class ArtistProgrammation
+class _ArtistProgrammation
 {
     /**
      * @var integer $id

@@ -1,9 +1,17 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-<h1>Artist creation</h1>
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('artist_list') }}">Artistes</a></li>
+    </ul>
+  </aside>
+  <h1>Ajouter un artistes</h1>
+</header>
 
-<form action="{{ path('artist_create') }}" method="post" {{ form_enctype(form) }}>
+<form class="form-horizontal" action="{{ path('artist_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <p>
         <button type="submit">Create</button>

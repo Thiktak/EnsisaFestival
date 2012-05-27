@@ -1,0 +1,77 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<style>
+  .adminmenu { text-align: center; }
+  .adminmenu > li { margin: 5px; }
+  .adminmenu > li > a { display: block; min-width: 100px; min-height: 60px; padding: 10px 0; }
+  .adminmenu > li > a:hover { text-decoration: none; }
+  .adminmenu > li figure { display: block; margin: 0; height: 60px; margin-right: 5px; }
+  .adminmenu > li figure img { max-height: 100%; max-width: 100%; }
+  .adminmenu > li a .caret { position: absolute; right: 5px; top: 45%; }
+  .adminmenu > li ul { text-align: left; }
+</style>
+
+<header>
+  <h1>Administration</h1>
+</header>
+
+<ul class="adminmenu">
+  <li class="btn dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <figure><img src="{{ asset('img/i-icons/artist-icon.png') }}" alt="Artistes" /></figure>
+      Artistes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{ path('artist') }}"><i class="icon-eye-open"></i> Page visiteur</a></li>
+      <li class="divider"></li>
+      <li><a href="{{ path('artist_list') }}"><i class="icon-list"></i> Liste</a></li>
+      <li><a href="{{ path('artist_new') }}"><i class="icon-plus"></i> Ajouter</a></li>
+    </ul>
+  </li>
+
+  <li class="btn dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <figure><img src="{{ asset('img/i-icons/programmation-icon.png') }}" alt="Programmations" /></figure>
+      Programmations
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{ path('programmation') }}"><i class="icon-eye-open"></i> Page visiteur</a></li>
+      <li class="divider"></li>
+      <li><a href="{{ path('programmation_list') }}"><i class="icon-list"></i> Liste</a></li>
+      <li><a href="{{ path('programmation_new') }}"><i class="icon-plus"></i> Ajouter</a></li>
+    </ul>
+  </li>
+
+  <li class="btn dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <figure><img src="{{ asset('img/i-icons/tickets-icon.png') }}" alt="Tickets" /></figure>
+      Tickets
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{ path('tickets') }}"><i class="icon-eye-open"></i> Page visiteur</a></li>
+      <li class="divider"></li>
+      <li><a href="{{ path('tickets_list') }}"><i class="icon-list"></i> Liste</a></li>
+      <li><a href="{{ path('tickets_new') }}"><i class="icon-plus"></i> Ajouter</a></li>
+    </ul>
+  </li>
+
+  <li class="btn dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <figure><img src="{{ asset('img/i-icons/pass-icon.png') }}" alt="Pass" /></figure>
+      Pass
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{ path('pass') }}"><i class="icon-eye-open"></i> Page visiteur</a></li>
+      <li class="divider"></li>
+      <li><a href="{{ path('pass_list') }}"><i class="icon-list"></i> Liste</a></li>
+    </ul>
+  </li>
+</ul>
+
+{% endblock %}

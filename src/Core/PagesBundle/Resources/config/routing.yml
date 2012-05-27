@@ -15,9 +15,13 @@ artistes_show:
     defaults: { _controller: CorePagesBundle:Pages:index }
 
 billeterie:
-    pattern:  /billeterie
-    defaults: { _controller: CorePagesBundle:Pages:index }
+    pattern:  /user/billeterie
+    defaults: { _controller: CoreTicketsBundle:ShoppedTickets:index }
 
 infos:
     pattern:  /infos
     defaults: { _controller: CorePagesBundle:Pages:infos }
+
+admin:
+    pattern:  /admin
+    defaults: { _controller: CorePagesBundle:Admin:index }

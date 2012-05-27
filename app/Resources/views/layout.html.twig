@@ -21,6 +21,9 @@
 
                     <li><a href="{{ path('fos_user_profile_show', {id: app.user.id}) }}">Mon profil</a></li>
                     <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li class="red"><a href="{{ path('admin') }}">Administration</a></li>
+                    {% endif %}
                     <li class="divider"></li>
                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                   </ul>
@@ -30,14 +33,14 @@
                   <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
                 </li>
                 <li class="btn btn-inverse">
-                  <a href="{{ path('fos_user_registration_register') }}">S'inscrire'</a>
+                  <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
                 </li>
             {% endif %}
               </ul>
             </div>
             <hgroup class="wrapper">
               <h1>
-                <img src="/festival/2/img/logo.png" alt="Logo" />
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" />
                 Le Festival
               </h1>
               <h2>Improbable et intemporel</h2>
@@ -57,27 +60,7 @@
           
           <div id="content"  class="wrapper">
             <aside id="menu">
-              <h1>Et aussi ...</h1>
-              <h2>Places restantes</h2>
-              <ul>
-                <li>Pass 3 jours: 40</li>
-                <li>Pass vendredi: 60</li>
-                <li>Pass samedi: 50</li>
-                <li>Pass dimanche: 70</li>
-              </ul>
-              
-              <h2>La selection du jour</h2>
-              <figure class="user">
-                <img src="/festival/2/img/artistes/david-bowie_mini.jpg" alt="Utilisateur David Bowie" />            <figcaption>
-                  <span class="name">David Bowie</span>
-                  <span class="info">Folk - Royaume-Uni</span>
-                </figcaption>
-              </figure>
-              
-              <h2>Et ailleurs</h2>
-              <ul>
-                <li><a href="?page=accueil">Festival les inRocks</a></li>
-              </ul>
+              {% render "CorePagesBundle:Pages:Menu" %}
             </aside>
             
             <section id="main" role="main">
@@ -102,13 +85,41 @@
               <li>Mentions legales</li>
               <li><a href="/ENSISA/TP/festival/cake/pages/changelog">Changelog</a></li>
             </ul>
-            <a href="http://card.olivares-georges.fr">Olivarès Georges</a> - <a href="http://validator.w3.org/check?uri=referer"><img src="./www/images/html5-badge-h-semantics.png" alt="Valid HTML5" /></a>
+            <a href="http://card.olivares-georges.fr">Olivarès Georges</a> - <a href="http://validator.w3.org/check?uri=referer">W3C</a>
           </footer>
         </div>
         {% block javascripts %}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-        <script src="http://web.ensisa.olivares-georges.fr/festival/2/app/webroot/js/script.js"></script>
         <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+        <script>
+          /**
+           * @author: Olivarès Georges <contact@olivares-georges.fr>
+           */
+
+          function checkActiveHrefs() {
+            $('a[href^="/"]').each(function() {
+              if( $(this).attr('href') == window.location.pathname )
+                $(this).addClass('active');
+              else
+                $(this).removeClass('active');
+            });
+          }
+           
+          $(document).ready(function() {
+            checkActiveHrefs();
+
+            $('div[data-addr]').each(function() {
+              url = $(this).attr('data-addr');
+              url = unescape(url);
+              
+              $(this).html('<div class="addr" style="margin: auto auto; text-align: center;"><iframe style="width: 100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' + url + '"></iframe></div>');
+            });
+
+            $('a[data-target]').click(function() {
+              return !window.open($(this).attr('href'), $(this).attr('data-target'));
+            });
+          });
+        </script>
         {% endblock %}
     </body>
 </html>

@@ -21,6 +21,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
+                default_target_path: /user/billeterie
             logout:       true
             anonymous:    true
         dev:
@@ -50,6 +51,8 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/user/, role: ROLE_USER }
+        
+    access_denied_url: /unauthorized
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
