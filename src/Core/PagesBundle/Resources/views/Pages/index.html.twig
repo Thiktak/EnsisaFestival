@@ -1,22 +1,15 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-  {% for item in slide %}
-    <img src="{{asset(item)}}" style="max-height: 100px; max-width: 100px" />
+  <ul data-slide="true">
+  {% for i, item in slide %}
+    <li {{ i ? 'style="display: none"' : ''}}><img src="{{asset(item)}}" /></li>
   {% endfor %}
-  
-    <p>
-      Le plus gros du travail à été fait. Il manque juste quelques détails (liens, css, éléments html, nettoyage du code superflu)
-    </p>
-    <p>
-      Le site fonctionne sous Symfony2.<br />
-      Il y a déjà la gestion des utilisateurs (ajout en ligne de commande, ...) et une grosse aprtie de l'adminsitration.<br />
-      pseudo: georges.olivares &amp; pwd: georges
-    </p>
-    <br />
+  </ul>
 
-    TODO :
-    <ul>
-      <li>rand() artist badge -> ORDER BY RAND() LIMIT 1</li>
-    </ul>
+  <hr />
+
+  <p class="text-align: center">
+    Adresse GitHub du projet <code><a href="https://github.com/Thiktak/EnsisaFestival" data-target="github">https://github.com/Thiktak/EnsisaFestival</a></code>
+  </p>
 {% endblock %}

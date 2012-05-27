@@ -19,9 +19,9 @@
                   </a>
                   <ul class="dropdown-menu">
 
-                    <li><a href="{{ path('fos_user_profile_show', {id: app.user.id}) }}">Mon profil</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Mon profil</a></li>
                     <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if is_granted("ROLE_ADMIN") %}
                     <li class="red"><a href="{{ path('admin') }}">Administration</a></li>
                     {% endif %}
                     <li class="divider"></li>
