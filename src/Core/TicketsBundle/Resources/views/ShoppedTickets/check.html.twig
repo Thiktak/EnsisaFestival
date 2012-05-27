@@ -1,1 +1,106 @@
-check
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link type="text/css" rel="stylesheet" media="screen" href="{{ asset('css/bootstrap.css') }}" />
+
+    <style>
+      dl dt:not(:first-child) { margin-top: 2em; }
+
+      html { background-color: black; padding-top: 1em; }
+      body { height: 100%; padding-top: 1em; max-width: 980px; margin: auto auto; }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span4 well">
+          {% if entity|length %}
+          {%- for key,val in entity %}
+            <div>
+              {{ key }}
+            </div>
+          {% endfor -%}
+          {% endif %}
+          <dl>
+            <dt>ID</dt>
+            <dd>{{ entity.id }}</dd>
+
+            <dt>TOKEN</dt>
+            <dd>{{ entity.token }}</dd>
+            
+            <dt>SALT</dt>
+            <dd>{{ entity.salt }}</dd>
+            
+            <dt>Nom</dt>
+            <dd>{{ entity.name }}</dd>
+            
+            <dt>Achat</dt>
+            <dd>{{ entity.date|date('d/m/Y H:i:s') }} par {{ entity.user }}</dd>
+
+            <dt>Pass</dt>
+            <dd>{{ entity.tickets }}</dd>
+          </dl>
+        </div>
+        <div class="span8">
+
+          <!-- CHECK IF TICKET EXISTS -->
+          
+          {% if not(return.exists) %}
+          <div class="alert alert-error">
+            <p>
+              FRAUDE ! Billet innexistant !
+            </p>
+          </div>
+          {% else %}
+
+          <!-- CHECK IF TICKET IS PAID -->
+
+            {% if not(return.paid) %}
+          <div class="alert alert-error">
+            <p>
+              Billet non payé
+            </p>
+          </div>
+            {% else %}
+          <div class="alert alert-success">
+            <p>
+              Billet payé
+            </p>
+          </div>
+            {% endif %}
+
+          <!-- CHECK IF TICKET IS VALID (date) -->
+
+            {% if not(return.date) %}
+          <div class="alert alert-error">
+            <p>
+              Billet non valide pour la journée
+            </p>
+          </div>
+            {% else %}
+          <div class="alert alert-success">
+            <p>
+              Billet valide
+            </p>
+          </div>
+            {% endif %}
+
+          <div style="text-align: center">
+            {% for prog in entity.tickets.programmations %}
+              <button class="btn {{ prog.date|date('d/m/Y') == now|date('d/m/Y') ? 'btn-success' : '' }}">
+                {{ prog.date|date('d/m/Y') }}
+              </button>
+            {% endfor %}
+          </div>
+
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html

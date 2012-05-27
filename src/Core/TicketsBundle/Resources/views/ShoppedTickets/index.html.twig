@@ -23,7 +23,7 @@
 
 
         {% if entity.paid %}
-        <a href="{{ www }}{{ path('pass_print', {id: entity.id}) }}" onclick="return !window.open(this.href);" class="icon-print pull-right" style="margin-left: .5em"></a>
+        <a href="{{ path('pass_print', {id: entity.id}) }}" onclick="return !window.open(this.href);" class="icon-print pull-right" style="margin-left: .5em"></a>
 
         <span class="label label-success pull-right">Payé</span>
         {% else %}      

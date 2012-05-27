@@ -39,7 +39,6 @@ class ShoppedTicketsController extends Controller
         return $this->render('CoreTicketsBundle:ShoppedTickets:index.html.twig', array(
             'entities' => $entities,
             'tickets'  => $tickets,
-            'www'      => 'http://localhost/',
             'paid'     => $paid,
         ));
     }
@@ -56,8 +55,6 @@ class ShoppedTicketsController extends Controller
 
         $url = $this->generateUrl('pass_check', array('id' => $id, 'salt' => $entity->getSalt()));
 
-        //EntityDump($entity);
-        echo $entity->getDate()->format('U');
         return $this->render('CoreTicketsBundle:ShoppedTickets:print.html.twig', array(
             'entity' => $entity,
             'url'    => $url,
@@ -66,27 +63,39 @@ class ShoppedTicketsController extends Controller
     }
 
     public function checkAction($id, $salt) {
-        EntityDump(array($id, $salt));
+        $now = new \DateTime();
+        $return = array(
+            'exists' => null,
+            'paid'   => null,
+            'date'   => null,
+        );
 
         $em = $this->getDoctrine()->getEntityManager();
-        /*$entity = $em->getRepository('CoreTicketsBundle:ShoppedTickets')->findOneBy(array(
+        $entity = $em->getRepository('CoreTicketsBundle:ShoppedTickets')->findOneBy(array(
             'id' => $id,
-            'md5(date)' => $salt,
-        ));*/
-        $entity = $em->createQueryBuilder()
-            ->from('CoreTicketsBundle:ShoppedTickets', 'st')
-            ->select('st')
-            ->andWhere('st.id = :id')
-            ->andWhere('st.salt = :salt')
-            ->setParameter('id', $id)
-            ->setParameter('salt', $salt)
-            ->getQuery()
-            ->getSingleResult();
+            'salt' => $salt,
+        ));
+        
+        $return['exists'] = (boolean) count($entity);
 
-        echo $entity->getPaid() ?: 0;
-        echo $entity->getToken();
+        if( $return['exists'] ) {
+            $return['paid'] = (boolean) $entity->getPaid();
+            $return['date'] = false;
 
-        return $this->render('CoreTicketsBundle:ShoppedTickets:check.html.twig', array());
+            if( $entity->getTickets() )
+                foreach( $entity->getTickets()->getProgrammations() as $prog ) 
+                {
+                    if( $prog->getDate()->format('d/m/Y') == $now->format('d/m/Y') )
+                        $return['date'] = true;
+                }
+        }
+
+
+        return $this->render('CoreTicketsBundle:ShoppedTickets:check.html.twig', array(
+            'return' => $return,
+            'entity' => $entity,
+            'now'    => $now,
+        ));
     }
 
 
