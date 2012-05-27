@@ -30,6 +30,7 @@ class PaypalController extends Controller
      */
     public function processAction()
     {
+        $url = null;
         $em = $this->getDoctrine()->getEntityManager();
         $user = $this->get('security.context')->getToken()->getUser();
         //$entities = $em->getRepository('CoreTicketsBundle:ShoppedTickets')->findBy(array('user' => $user->getID(), 'paid < 1'));
@@ -54,11 +55,11 @@ class PaypalController extends Controller
                     $entity->getTickets()->getPrice());
             }
 
-            EntityDump($entities);
+            //EntityDump($entities);
 
             $o -> SetExpressCheckout(
-                'http://localhost/ENSISA/TP/festival/www/web/app_dev.php/user/paid/cancel',
-                'http://localhost/ENSISA/TP/festival/www/web/app_dev.php/user/paid/return'
+                'http://' . $_SERVER['HTTP_HOST'] . $this->generateUrl('paid_cancel'),
+                'http://' . $_SERVER['HTTP_HOST'] . $this->generateUrl('paid_return')
             );
 
             list($url, $response) = array_values($o -> exec(0));
@@ -71,13 +72,17 @@ class PaypalController extends Controller
             }
             $em->flush();
             
-            return $this->redirect($url);
-            //Header('Location: ' . $url);
-            //Header('Refresh: 0;URL=' . $url); // BUG !
+            $this->redirect($url);
+            Header('Location: ' . $url);
+            Header('Refresh: 0;URL=' . $url); // BUG !
         }
         catch(Exception $e) {
-            die($e->getMessage());
+            //die($e->getMessage());
         }
+
+        return $this->render('CoreTicketsBundle:Paypal:process.html.twig', array(
+            'url' => $url
+        ));
     }
 
     public function returnAction() {
