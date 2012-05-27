@@ -13,6 +13,7 @@ Fonctionnalités
 - Correspondance artistes - programmations - tickets
 - BACKEND
 - Paiement Paypal : Pour l'instant, l'interface est encore réglé en sandbox
+- Scan QRCODE du billet pour le valider (pas de modif en BDD)
 
 
 ToDo
@@ -21,6 +22,7 @@ ToDo
 - Réadapter quelques templates
 - Réorganiser le code javascript/css
 - Ajouter des titres aux pages
+- + nombre de tickets validés par jours
 
 
 Sources
