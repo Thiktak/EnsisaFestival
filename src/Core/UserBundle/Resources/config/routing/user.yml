@@ -1,0 +1,34 @@
+user:
+    pattern:  /list
+    defaults: { _controller: "CoreUserBundle:User:index" }
+
+user_list:
+    pattern:  /list
+    defaults: { _controller: "CoreUserBundle:User:index" }
+
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreUserBundle:User:show" }
+
+user_new:
+    pattern:  /new
+    defaults: { _controller: "CoreUserBundle:User:new" }
+
+user_create:
+    pattern:  /create
+    defaults: { _controller: "CoreUserBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CoreUserBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CoreUserBundle:User:update" }
+    requirements: { _method: post }
+
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CoreUserBundle:User:delete" }
+    requirements: { _method: post }

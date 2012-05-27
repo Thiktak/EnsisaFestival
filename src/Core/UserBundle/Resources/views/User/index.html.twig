@@ -1,0 +1,47 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+<header>
+  <aside>
+    <ul class="breadcrumb">
+      <li><a href="{{ path('admin') }}">Admin</a></li>
+      <li><a href="{{ path('user') }}">Utilisateurs</a></li>
+    </ul>
+  </aside>
+  <h1>Liste des utilisateurs</h1>
+</header>
+
+<div class="alert alert-block alert-info">
+    <p>
+        La gestion des utilsiateur n'est pas complétement effective (édition/ajout) via l'administation.<br />
+        Pour l'activer, merci de passer par un Bundle approprié (Sonata, ...).
+    </p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username / Email</th>
+            <th>Enabled</th>
+            <th>Lastlogin</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                <a href="#">{{ entity.username }}</a><br />
+                {{ entity.email }}
+            </td>
+            <td>{{ entity.enabled ? 'activé' : 'non activé' }}</td>
+            <td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>
+                {% for role in entity.roles %}<span class="label label-info" style="display: block">{{ role }}</span>{% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
