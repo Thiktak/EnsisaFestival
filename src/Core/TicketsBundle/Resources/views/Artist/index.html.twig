@@ -43,7 +43,7 @@
 <br /><br />
 
 {% for entity in entities %}
-<a href="{{ path('artist_show', { 'id': entity.id }) }}">
+<a href="{{ path('artist_view', { 'id': entity.id }) }}">
 <figure class="user">
     <img src="{{ asset('img/artistes/' ~ entity.image) }}" alt="{{ entity.name }}">
     <figcaption>

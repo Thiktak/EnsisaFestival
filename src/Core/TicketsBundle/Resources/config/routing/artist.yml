@@ -2,13 +2,13 @@ artist_list:
     pattern:  /
     defaults: { _controller: "CoreTicketsBundle:Artist:list" }
 
-artist_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "CoreTicketsBundle:Artist:show" }
-
 artist_new:
     pattern:  /new
     defaults: { _controller: "CoreTicketsBundle:Artist:new" }
+
+artist_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CoreTicketsBundle:Artist:show" }
 
 artist_create:
     pattern:  /create
