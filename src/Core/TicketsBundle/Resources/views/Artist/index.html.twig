@@ -14,27 +14,43 @@
     <ul class="btn-group pull-right">
         <li class="btn btn-mini">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Genre
+                Genre {% if app.request.query.get('filter-gender') %}({{app.request.query.get('filter-gender')}}){% endif %}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li><a href="?">Tous</a></li>
                 <li class="divider"></li>
                 {% for gender in genders %}
-                <li><a href="?filter-gender={{gender}}">{{ gender }}</a></li>
+                {% set attr = app.request.query.all|merge({'filter-gender' : gender}) %}
+                <li><a href="{{ path(app.request.attributes.get('_route'), attr) }}">{{ gender }}</a></li>
                 {% endfor %}
             </ul>
         </li>
         <li class="btn btn-mini">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                Pays
+                Pays {% if app.request.query.get('filter-country') %}({{app.request.query.get('filter-country')}}){% endif %}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li><a href="?">Tous</a></li>
                 <li class="divider"></li>
                 {% for country in countries %}
-                <li><a href="?filter-country={{country}}">{{ country }}</a></li>
+                {% set attr = app.request.query.all|merge({'filter-country' : country}) %}
+                <li><a href="{{ path(app.request.attributes.get('_route'), attr) }}">{{ country }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="btn btn-mini">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Journées {% if app.request.query.get('filter-day') %}({{app.request.query.get('filter-day')}}){% endif %}
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="?">Toutes</a></li>
+                <li class="divider"></li>
+                {% for day in days %}
+                {% set attr = app.request.query.all|merge({'filter-day' : day}) %}
+                <li><a href="{{ path(app.request.attributes.get('_route'), attr) }}">{{ day }}</a></li>
                 {% endfor %}
             </ul>
         </li>

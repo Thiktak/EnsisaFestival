@@ -21,12 +21,14 @@ class ArtistController extends Controller
     {
         $get_country = $this->getRequest()->query->get('filter-country');
         $get_gender  = $this->getRequest()->query->get('filter-gender');
+        $get_day     = $this->getRequest()->query->get('filter-day');
 
         $em = $this->getDoctrine()->getEntityManager();
 
         # FILTRES
         $filters['countries'] = array();
         $filters['genders']   = array();
+        $filters['days']      = array();
 
         ## Récupération des élèments des filtres (country, gender)
         $filtersEntities = $em->createQueryBuilder()
@@ -34,15 +36,20 @@ class ArtistController extends Controller
             ->select('a.country, a.gender')
             ->getQuery()
             ->getResult();
+        $filtersEntities = $em->getRepository('CoreTicketsBundle:Artist')->findAll();
 
         ## Stockage
         foreach( $filtersEntities as $row ) {
-            if( $row['country'] ) $filters['countries'][] = $row['country'];
-            if( $row['gender'] )  $filters['genders'][]   = $row['gender'];
+            if( $row->getCountry() ) $filters['countries'][] = $row->getCountry();
+            if( $row->getGender() )  $filters['genders'][]   = $row->getGender();
+            if( $row->getProgrammations() )
+                foreach( $row->getProgrammations() as $progs )
+                    $filters['days'][ $progs->getDate()->format('Y-m-d') ] = $progs->getDate()->format('Y-m-d');
         }
 
         array_unique($filters['countries']);
         array_unique($filters['genders']);
+        array_unique($filters['days']);
 
         # DATAS
         $entities = $em->createQueryBuilder()
@@ -58,7 +65,8 @@ class ArtistController extends Controller
         return $this->render('CoreTicketsBundle:Artist:index.html.twig', array(
             'entities'  => $entities->getQuery()->getResult(), // On récupère toutes les données avec les filtres
             'countries' => array_unique($filters['countries']),
-            'genders'   => array_unique($filters['genders'])
+            'genders'   => array_unique($filters['genders']),
+            'days'      => array_unique($filters['days'])
         ));
     }
 

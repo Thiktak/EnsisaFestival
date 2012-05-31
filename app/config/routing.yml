@@ -22,6 +22,10 @@ unauthorized:
     pattern:  /unauthorized
     defaults: { _controller: CorePagesBundle:Pages:error403 }
 
+contacts:
+    pattern:  /unauthorized
+    defaults: { _controller: CorePagesBundle:Pages:error403 }
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

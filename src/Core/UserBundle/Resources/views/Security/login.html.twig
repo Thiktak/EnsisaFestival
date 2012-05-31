@@ -10,9 +10,10 @@
 
 <div class="row-fluid">
   <div class="span6">
-    <h2>Vous avez déjà un compte</h2>
 
-    <form action="{{ path("fos_user_security_check") }}" method="post" class="t-center">
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="t-center well">
+      <fieldset>
+        <legend>Vous avez déjà un compte</legend>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
         <div>
@@ -33,9 +34,11 @@
         <div>
           <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn" />
         </div>
+      </fieldset>
     </form>
   </div>
   <div class="span6">
+
     <h2>Vous êtes un nouveau festivalier</h2>
     Bienvenue !
     Enregistrez-vous pour commander et accéder à nos services :

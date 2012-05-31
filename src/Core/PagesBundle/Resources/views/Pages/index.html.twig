@@ -1,15 +1,33 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-  <ul data-slide="true">
+  <div id="slider" data-slider="true">
   {% for i, item in slide %}
-    <li {{ i ? 'style="display: none"' : ''}}><img src="{{asset(item)}}" /></li>
+    <img src="{{ asset(item) }}" data-thumb="{{ asset(item) }}" alt="Slide" {{loop.first ? null : 'style="display: none;"' }} />
   {% endfor %}
-  </ul>
+  </div>
 
   <hr />
 
   <p class="text-align: center">
     Adresse GitHub du projet <code><a href="https://github.com/Thiktak/EnsisaFestival" data-target="github">https://github.com/Thiktak/EnsisaFestival</a></code>
   </p>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!--<script type="text/javascript" src="{{ asset('js/jquery.nivo.slider.js') }}"></script>-->
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('div[data-slider]').each(function() {
+          $('div[data-slider] img:gt(0)').each(function() {
+            $(this).parent().css({'height': $(this).height(), 'overflow': 'hidden'})
+            $(this).hide();
+          });
+          setInterval(function(){$('div[data-slider] :first-child').fadeOut('slow', function() {
+            $(this).next('img').fadeIn('slow').end().appendTo('div[data-slider]');
+          });}, 5000);
+      });
+    });
+    </script>
 {% endblock %}
